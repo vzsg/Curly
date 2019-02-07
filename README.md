@@ -29,8 +29,17 @@ let package = Package(
 
 ```swift
 // Typically, this is part of configure.swift
+import Vapor
+import CurlyClient
+// ... other imports ...
 
-TODO
+
+public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
+    // ... other configuration ...
+
+    services.register(CurlyClient.self)
+    config.prefer(CurlyClient.self, for: Client.self)
+}
 ```
 
 ### 3. (Linux only) Check system dependencies
