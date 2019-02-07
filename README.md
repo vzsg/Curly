@@ -4,7 +4,7 @@ This package wraps [Perfect-CURL](https://github.com/PerfectlySoft/Perfect-CURL)
 
 ## Usage
 
-1. Add this package as a dependency to your Vapor 3 project
+### 1. Add this package as a dependency to your Vapor 3 project
 
 ```swift
 // swift-tools-version:4.0
@@ -25,7 +25,7 @@ let package = Package(
 )
 ```
 
-2. Register and prefer the CurlyClient implementation
+### 2. Register and prefer the CurlyClient implementation
 
 ```swift
 // Typically, this is part of configure.swift
@@ -33,9 +33,10 @@ let package = Package(
 TODO
 ```
 
-3. (Linux only) Check system dependencies
+### 3. (Linux only) Check system dependencies
 
 If you're building for Linux, you need to have the `uuid-dev` package installed in the builder image, and `libuuid1` in the runtime image.
 
-4. Profit!
+### 4. Profit!
 
+Your Vapor app should now use curl directly instead of URLSession.
