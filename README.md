@@ -25,7 +25,7 @@ let package = Package(
 )
 ```
 
-1. Register and prefer the CurlyClient implementation
+2. Register and prefer the CurlyClient implementation
 
 ```swift
 // Typically, this is part of configure.swift
@@ -33,6 +33,9 @@ let package = Package(
 TODO
 ```
 
-1. ???
-1. Profit!
+3. (Linux only) Check system dependencies
+
+If you're building for Linux, you need to have the `uuid-dev` package installed in the builder image, and `libuuid1` in the runtime image.
+
+4. Profit!
 
