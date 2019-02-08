@@ -44,7 +44,7 @@ private extension CURLRequest {
 
         self.options.append(.httpMethod(.from(string: "\(http.method)")))
 
-        if let data = http.body.data {
+        if let data = http.body.data, !data.isEmpty {
             self.options.append(.postData(Array(data)))
         }
 
