@@ -1,4 +1,4 @@
-module CCurl
+module CCurlyCURL
 {
     umbrella header "ccurl.h"
     link "curl"

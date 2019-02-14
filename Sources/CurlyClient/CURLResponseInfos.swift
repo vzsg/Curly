@@ -17,7 +17,7 @@
 //===----------------------------------------------------------------------===//
 //
 
-import CCurl
+import CCurlyCURL
 
 protocol CURLResponseInfo {
 	associatedtype ValueType

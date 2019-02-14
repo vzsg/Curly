@@ -17,7 +17,7 @@
 //===----------------------------------------------------------------------===//
 //
 
-import CCurl
+import CCurlyCURL
 import Foundation
 
 enum ResponseReadState {

@@ -17,7 +17,7 @@
 //===----------------------------------------------------------------------===//
 //
 
-import CCurl
+import CCurlyCURL
 
 enum TLSMethod {
 	case tlsV1

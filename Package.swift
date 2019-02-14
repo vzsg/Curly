@@ -20,8 +20,8 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "CurlyClient",
-            dependencies: ["CCurl", "Vapor"]),
-        .systemLibrary(name: "CCurl", pkgConfig: "libcurl"),
+            dependencies: ["CCurlyCURL", "Vapor"]),
+        .systemLibrary(name: "CCurlyCURL", pkgConfig: "libcurl"),
         .testTarget(
             name: "CurlyClientTests",
             dependencies: ["CurlyClient"]),
