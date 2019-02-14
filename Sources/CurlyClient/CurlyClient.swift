@@ -1,5 +1,4 @@
 import Vapor
-import PerfectCURL
 
 public final class CurlyClient: Client, ServiceType {
     public var container: Container

@@ -1,0 +1,6 @@
+module CCurl
+{
+    umbrella header "ccurl.h"
+    link "curl"
+    export *
+}

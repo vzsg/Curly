@@ -42,10 +42,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 }
 ```
 
-### 3. (Linux only) Check system dependencies
-
-If you're building for Linux, you need to have the `uuid-dev` package installed – a requirement of Perfect-LinuxBridge. If you are building a thin Docker image, be sure to install `libuuid1` in the final build.
-
-### 4. Profit!
+### 3. Profit!
 
 Your Vapor app should now use curl directly instead of URLSession.
