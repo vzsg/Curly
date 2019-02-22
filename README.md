@@ -60,24 +60,24 @@ See the tests for examples of both methods.
 
 - **proxy(String)**
 
-    Equivalent to the `-x` or `--proxy` parameter of curl, which enables proxying via a HTTP, HTTPS or SOCKS proxy. See [man curl](https://curl.haxx.se/docs/manpage.html#-x) for a detailed explanation.
+    Equivalent to the [`-x`/`--proxy`](https://curl.haxx.se/docs/manpage.html#-x) parameter of curl, which enables proxying via a HTTP, HTTPS or SOCKS proxy.
 
 - **proxyAuth(user: String, password: String)**
 
-    Equivalent to the `-U`/`--proxy-user` parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server. See [man curl](https://curl.haxx.se/docs/manpage.html#-U) for a detailed explanation.
+    Equivalent to the [`-U`/`--proxy-user`](https://curl.haxx.se/docs/manpage.html#-U) parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server.
 
 - **timeout(seconds: Int)**
 
-    Equivalent to the `-m`/`--max-time` parameter of curl, which allows specifying the maximum time allowed to service the request. See [man curl](https://curl.haxx.se/docs/manpage.html#-m) for a detailed explanation.
+    Equivalent to the [`-m`/`--max-time`](https://curl.haxx.se/docs/manpage.html#-m) parameter of curl, which allows specifying the maximum time allowed to service the request.
 
 - **connectTimeout(seconds: Int)**
 
-    Equivalent to the `--connect-time` parameter of curl, which allows specifying the maximum time allowed for the connection to the server. See [man curl](https://curl.haxx.se/docs/manpage.html#--connect-timeout) for a detailed explanation.
+    Equivalent to the [`--connect-timeout`](https://curl.haxx.se/docs/manpage.html#--connect-timeout) parameter of curl, which allows specifying the maximum time allowed for the connection to the server.
 
 - **cookieJar(String)**
   
-  Equivalent to the **both** the `-b`/`--cookie` **and** `-c`/`--cookie-jar` parameters of curl. The file name provided with the option will be used as a cookie storage (reading and writing) for this request. See [man curl](https://curl.haxx.se/docs/manpage.html#-b) for a detailed explanation, and the tests for an example.
+  Equivalent to the **both** the [`-b`/`--cookie`](ttps://curl.haxx.se/docs/manpage.html#-b) **and** [`-c`/`--cookie-jar`](ttps://curl.haxx.se/docs/manpage.html#-c) parameters of curl. The file name provided with the option will be used as a cookie storage – reading and writing – for this request. See the tests for an example.
 
 - **followRedirects(Bool)**
 
-    Equivalent to the `-L`/`--location` parameter of curl, which enables following redirects automatically. See [man curl](https://curl.haxx.se/docs/manpage.html#-L) for a detailed explanation.
+    Equivalent to the [`-L`/`--location`](https://curl.haxx.se/docs/manpage.html#-L) parameter of curl, which enables following redirects automatically.
