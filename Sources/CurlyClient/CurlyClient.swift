@@ -23,10 +23,10 @@ public final class CurlyClient: Client, ServiceType {
         let promise = container.eventLoop.newPromise(Response.self)
 
         CURLRequest(req: req)
-            .perform { [container] comp in
+            .perform { comp in
                 do {
                     let response = try comp()
-                    promise.succeed(result: Response(curl: response, on: container))
+                    promise.succeed(result: Response(curl: response, on: req))
                 } catch {
                     promise.fail(error: error)
                 }
@@ -50,6 +50,12 @@ private extension CURLRequest {
         http.headers.forEach { key, val in
             self.addHeader(.fromStandard(name: key), value: val)
             return
+        }
+
+        if let storage = try? req.make(CurlyOptionStorage.self) {
+            storage.options.forEach {
+                $0.curlOption.forEach { self.options.append($0) }
+            }
         }
     }
 }

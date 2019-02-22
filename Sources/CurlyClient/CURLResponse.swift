@@ -26,7 +26,7 @@ enum ResponseReadState {
 
 /// Response for a CURLRequest. 
 /// Obtained by calling CURLResponse.perform.
-open class CURLResponse {
+class CURLResponse {
 	/// A response header that can be retreived.
 	typealias Header = HTTPResponseHeader
 	/// A confirmation func thats used to obtain an asynchrnous response.

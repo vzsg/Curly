@@ -33,7 +33,7 @@ protocol CURLRequestBodyGenerator {
 /// Creates and configures a CURL request.
 /// init with a URL and zero or more options.
 /// Call .perform to get the CURLResponse
-open class CURLRequest {
+class CURLRequest {
 	typealias POSTFields = CURL.POSTFields
 	/// A header which can be added to the request.
 	typealias Header = HTTPRequestHeader
