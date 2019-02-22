@@ -52,7 +52,7 @@ private extension CURLRequest {
             return
         }
 
-        if let storage = try? req.make(CurlyOptionStorage.self) {
+        if let storage = req.storage {
             storage.options.forEach {
                 $0.curlOption.forEach { self.options.append($0) }
             }

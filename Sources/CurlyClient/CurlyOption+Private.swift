@@ -7,7 +7,7 @@ class CurlyOptionStorage: Service {
 extension Request {
     var storage: CurlyOptionStorage? {
         get {
-            return try? make(CurlyOptionStorage.self)
+            return try? privateContainer.make(CurlyOptionStorage.self)
         }
     }
 }
