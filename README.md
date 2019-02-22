@@ -1,4 +1,4 @@
-# CurlyClient
+# Curly
 
 This package wraps [Perfect-CURL](https://github.com/PerfectlySoft/Perfect-CURL) into a Vapor 3 `Client`. If you are running into issues with URLSession on Linux, or you want cookies or proxy support, this might be the way out.
 
@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
-        .package(url: "https://github.com/vzsg/CurlyClient.git", from: "0.3.0"),
+        .package(url: "https://github.com/vzsg/Curly.git", from: "0.3.0"),
         // ... other dependencies ...
     ],
     targets: [
