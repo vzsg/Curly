@@ -1,8 +1,6 @@
 # CurlyClient
 
-This package wraps [Perfect-CURL](https://github.com/PerfectlySoft/Perfect-CURL) into a Vapor 3 `Client`.
-
-If you are running into issues with URLSession on Linux, or you want cookies or proxy support, this might be the way out.
+This package wraps [Perfect-CURL](https://github.com/PerfectlySoft/Perfect-CURL) into a Vapor 3 `Client`. If you are running into issues with URLSession on Linux, or you want cookies or proxy support, this might be the way out.
 
 ## Usage
 
@@ -50,20 +48,21 @@ Your Vapor app now uses curl directly instead of URLSession.
 
 ### 4. Extra profit: CurlyOptions
 
-From 0.3.0, Curly exposes a few useful options from cURL that are otherwise not available via the Client interface, or even URLSession.
+From 0.3.0, Curly exposes a few useful options from cURL that are otherwise not available via the Client interface, or even URLSession. To use them, you _must_ register Curly via the `CurlyProvider` as seen in step 2.
 
-To use these options, you _must_ register Curly via the `CurlyProvider` as seen in step 2. With that in place, .you can call `Request.addCurlyOption` in either the `beforeSend` closure – when using the convenience functions of Client –, or on the Request instance itself – when using `Client.send()` and a self-built Request object. See the tests for examples of both methods.
+With that in place, you can call `Request.addCurlyOption` in either the `beforeSend` closure when using the convenience functions of Client, or on the Request instance itself when using `Client.send()` and a self-built Request object.  
+See the tests for examples of both methods.
 
-> **Warning**: Calling `addCurlyOption` without the Provider will result in a fatal error in debug builds, and a warning print in release builds.
+> **Warning**: Calling `Request.addCurlyOption` without the Provider will result in a fatal error in debug builds, and a warning print in release builds.
 
 
 #### Available options
 
 |Option|Description|
 |-|-|
-|`.proxy(String)`|Equivalent to the `-x` or `--proxy` parameter of curl, which enables proxying via a HTTP, HTTPS or SOCKS proxy.<br/>See [man curl](https://curl.haxx.se/docs/manpage.html#-x) for a detailed explanation.|
-|`.proxyAuth(user: String, password: String)`|Equivalent to the `-U`/`--proxy-user` parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server.<br/>See [man curl](https://curl.haxx.se/docs/manpage.html#-U) for a detailed explanation.|
-|`.timeout(seconds: Int)`|Equivalent to the `-m`/`--max-time` parameter of curl, which allows specifying the maximum time allowed to service the request.<br/>See [man curl](https://curl.haxx.se/docs/manpage.html#-m) for a detailed explanation.|
-|`.connectTimeout(seconds: Int)`|Equivalent to the `--connect-time` parameter of curl, which allows specifying the maximum time allowed for the connection to the server.<br/>See [man curl](https://curl.haxx.se/docs/manpage.html#--connect-timeout) for a detailed explanation.|
-|`.cookieJar(String)`|Equivalent to the **both** the `-b`/`--cookie` **and** `-c`/`--cookie-jar` parameters of curl. The file name provided with the option will be used as a cookie storage (reading and writing) for this request, <br/>See [man curl](https://curl.haxx.se/docs/manpage.html#-b) for a detailed explanation, and the tests for an example.|
-|`.followRedirects(Bool)`|Equivalent to the `-L`/`--location` parameter of curl, which enables following redirects automatically.<br/>See [man curl](https://curl.haxx.se/docs/manpage.html#-L) for a detailed explanation.|
+|`.proxy(String)`|Equivalent to the `-x` or `--proxy` parameter of curl, which enables proxying via a HTTP, HTTPS or SOCKS proxy. See [man curl](https://curl.haxx.se/docs/manpage.html#-x) for a detailed explanation.|
+|`.proxyAuth(user: String, password: String)`|Equivalent to the `-U`/`--proxy-user` parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server. See [man curl](https://curl.haxx.se/docs/manpage.html#-U) for a detailed explanation.|
+|`.timeout(seconds: Int)`|Equivalent to the `-m`/`--max-time` parameter of curl, which allows specifying the maximum time allowed to service the request. See [man curl](https://curl.haxx.se/docs/manpage.html#-m) for a detailed explanation.|
+|`.connectTimeout(seconds: Int)`|Equivalent to the `--connect-time` parameter of curl, which allows specifying the maximum time allowed for the connection to the server. See [man curl](https://curl.haxx.se/docs/manpage.html#--connect-timeout) for a detailed explanation.|
+|`.cookieJar(String)`|Equivalent to the **both** the `-b`/`--cookie` **and** `-c`/`--cookie-jar` parameters of curl. The file name provided with the option will be used as a cookie storage (reading and writing) for this request. See [man curl](https://curl.haxx.se/docs/manpage.html#-b) for a detailed explanation, and the tests for an example.|
+|`.followRedirects(Bool)`|Equivalent to the `-L`/`--location` parameter of curl, which enables following redirects automatically. See [man curl](https://curl.haxx.se/docs/manpage.html#-L) for a detailed explanation.|
