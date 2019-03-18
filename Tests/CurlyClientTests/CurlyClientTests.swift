@@ -1,7 +1,7 @@
 import XCTest
 import NIO
 import Vapor
-@testable import CurlyClient
+import CurlyClient
 
 final class CurlyClientTests: XCTestCase {
     private func testApplication() throws -> Application {
