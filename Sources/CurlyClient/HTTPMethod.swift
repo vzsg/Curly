@@ -58,11 +58,17 @@ enum HTTPMethod: Hashable, CustomStringConvertible {
 		default:        return .custom(string)
 		}
 	}
-	
+
+#if swift(>=4.2)
+    func hash(into hasher: inout Hasher) {
+		hasher.combine(description)
+	}
+#else
 	/// Method String hash value
 	var hashValue: Int {
 		return self.description.hashValue
 	}
+#endif
 	
 	/// The method as a String
 	var description: String {

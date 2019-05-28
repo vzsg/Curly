@@ -32,10 +32,16 @@ enum HTTPRequestHeader {
 		case proxyConnection, xUIDH, xCsrfToken, accessControlRequestMethod, accessControlRequestHeaders
 		case xB3TraceId, xB3SpanId, xB3ParentSpanId
 		case custom(name: String)
-		
+
+	#if swift(>=4.2)
+		func hash(into hasher: inout Hasher) {
+			hasher.combine(standardName.lowercased())
+		}
+	#else
 		var hashValue: Int {
 			return self.standardName.lowercased().hashValue
 		}
+	#endif
 		
 		var standardName: String {
 			switch self {
