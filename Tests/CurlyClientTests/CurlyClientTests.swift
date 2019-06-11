@@ -101,7 +101,7 @@ final class CurlyClientTests: XCTestCase {
                 XCTFail("Should throw a CURLResponse.Error type")
                 return
             }
-            XCTAssertEqual(curlyError.code, CurlyError.Code.operationTimedout)
+            XCTAssertEqual(curlyError.code, CURLErrorCode.operationTimedout)
         }
     }
     
