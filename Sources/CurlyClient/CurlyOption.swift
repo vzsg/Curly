@@ -7,6 +7,7 @@ public enum CurlyOption {
     case connectTimeout(seconds: Int)
     case cookieJar(String)
     case followRedirects(Bool)
+    case insecure(Bool)
 }
 
 extension Request {

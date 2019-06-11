@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
-        .package(url: "https://github.com/vzsg/Curly.git", from: "0.3.0"),
+        .package(url: "https://github.com/vzsg/Curly.git", from: "0.4.0"),
         // ... other dependencies ...
     ],
     targets: [
@@ -81,3 +81,7 @@ See the tests for examples of both methods.
 - **followRedirects(Bool)**
 
     Equivalent to the [`-L`/`--location`](https://curl.haxx.se/docs/manpage.html#-L) parameter of curl, which enables following redirects automatically.
+
+- **insecure(Bool)**
+
+Equivalent to the [`-k`/`--insecure`](https://curl.haxx.se/docs/manpage.html#-k) parameter of curl, which can disable verification of the certificates received from the remote server.

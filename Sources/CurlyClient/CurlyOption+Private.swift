@@ -27,6 +27,8 @@ extension CurlyOption {
             return [.proxyUserPwd("\(user):\(password)")]
         case .followRedirects(let follow):
             return [.followLocation(follow)]
+        case .insecure(let insecure):
+            return [CURLRequest.Option.sslVerifyPeer(!insecure)]
         }
     }
 }
