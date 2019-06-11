@@ -24,6 +24,6 @@ let package = Package(
         .systemLibrary(name: "CCurlyCURL", pkgConfig: "libcurl"),
         .testTarget(
             name: "CurlyClientTests",
-            dependencies: ["CurlyClient"]),
+            dependencies: ["CurlyClient", "CCurlyCURL"]),
     ]
 )
