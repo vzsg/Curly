@@ -84,4 +84,4 @@ See the tests for examples of both methods.
 
 - **insecure(Bool)**
 
-Equivalent to the [`-k`/`--insecure`](https://curl.haxx.se/docs/manpage.html#-k) parameter of curl, which can disable verification of the certificates received from the remote server.
+    Equivalent to the [`-k`/`--insecure`](https://curl.haxx.se/docs/manpage.html#-k) parameter of curl, which can disable verification of the certificates received from the remote server.
