@@ -105,10 +105,16 @@ class CURLRequest {
         /// Maximum time in seconds for the request to complete.
         /// The default timeout is never.
         timeout(Int),
+        /// Maximum time in milliseconds for the request to complete.
+        /// The default timeout is never.
+        timeoutMs(Int),
         /// Maximum time in seconds for the request connection phase.
         /// The default timeout is 300 seconds.
         connectTimeout(Int),
-        /// The average transfer speed in bytes per second that the transfer should be below 
+        /// Maximum time in milliseconds for the request connection phase.
+        /// The default timeout is 300 seconds.
+        connectTimeoutMs(Int),
+        /// The average transfer speed in bytes per second that the transfer should be below
         /// during `.lowSpeedLimit` seconds for the request to be too slow and abort.
         lowSpeedLimit(Int),
         /// The time in seconds that the transfer speed should be below the `.lowSpeedLimit` 

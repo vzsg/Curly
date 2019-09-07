@@ -48,8 +48,12 @@ extension CURLRequest.Option {
             curl.setOption(CURLOPT_PROXYPORT, int: optInt)
         case .timeout(let optInt):
             curl.setOption(CURLOPT_TIMEOUT, int: optInt)
+        case .timeoutMs(let optInt):
+            curl.setOption(CURLOPT_TIMEOUT_MS, int: optInt)
         case .connectTimeout(let optInt):
             curl.setOption(CURLOPT_CONNECTTIMEOUT, int: optInt)
+        case .connectTimeoutMs(let optInt):
+            curl.setOption(CURLOPT_CONNECTTIMEOUT_MS, int: optInt)
         case .lowSpeedLimit(let optInt):
             curl.setOption(CURLOPT_LOW_SPEED_LIMIT, int: optInt)
         case .lowSpeedTime(let optInt):

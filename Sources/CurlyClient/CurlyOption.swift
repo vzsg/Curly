@@ -3,8 +3,10 @@ import Vapor
 public enum CurlyOption {
     case proxy(String)
     case proxyAuth(user: String, password: String)
-    case timeout(seconds: Int)
-    case connectTimeout(seconds: Int)
+    case timeout(Int)
+    case timeoutMs(Int)
+    case connectTimeout(Int)
+    case connectTimeoutMs(Int)
     case cookieJar(String)
     case followRedirects(Bool)
     case insecure(Bool)

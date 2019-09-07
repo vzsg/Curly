@@ -29,7 +29,7 @@ final class CurlyClientTests: XCTestCase {
             "baz": "qux"
         ], as: MediaType.urlEncodedForm)
 
-        req.addCurlyOption(.timeout(seconds: 5))
+        req.addCurlyOption(.timeout(5))
 
         let res = try app.client().send(req).wait()
 
@@ -55,7 +55,7 @@ final class CurlyClientTests: XCTestCase {
     func testConvenience() throws {
         let app = try testApplication()
         let res = try app.client().get("https://httpbin.org/get", beforeSend: { req in
-            req.addCurlyOption(.timeout(seconds: 5))
+            req.addCurlyOption(.timeout(5))
         }).wait()
 
         XCTAssertNotNil(res.http.body.data)
@@ -93,7 +93,7 @@ final class CurlyClientTests: XCTestCase {
     func testTimeoutError() throws {
         let app = try testApplication()
         let futureRes = try app.client().get("https://httpstat.us/200?sleep=5000", beforeSend: { req in
-            req.addCurlyOption(.timeout(seconds: 1))
+            req.addCurlyOption(.timeoutMs(500))
         })
         
         XCTAssertThrowsError(try futureRes.wait(), "Should throw timeout error") { error in

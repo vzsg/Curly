@@ -17,8 +17,12 @@ extension CurlyOption {
         switch self {
         case .connectTimeout(let seconds):
             return [.connectTimeout(seconds)]
+        case .connectTimeoutMs(let ms):
+            return [.connectTimeoutMs(ms)]
         case .timeout(let seconds):
             return [.timeout(seconds)]
+        case .timeoutMs(let ms):
+            return [.timeoutMs(ms)]
         case .cookieJar(let file):
             return [.cookieFile(file), .cookieJar(file)]
         case .proxy(let proxy):

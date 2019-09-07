@@ -66,13 +66,21 @@ See the tests for examples of both methods.
 
     Equivalent to the [`-U`/`--proxy-user`](https://curl.haxx.se/docs/manpage.html#-U) parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server.
 
-- **timeout(seconds: Int)**
+- **timeout(Int)**
 
-    Equivalent to the [`-m`/`--max-time`](https://curl.haxx.se/docs/manpage.html#-m) parameter of curl, which allows specifying the maximum time allowed to service the request.
+    Equivalent to the [`-m`/`--max-time`](https://curl.haxx.se/docs/manpage.html#-m) parameter of curl, which allows specifying the maximum time allowed to service the request in seconds.
 
-- **connectTimeout(seconds: Int)**
+- **timeoutMs(Int)**
 
-    Equivalent to the [`--connect-timeout`](https://curl.haxx.se/docs/manpage.html#--connect-timeout) parameter of curl, which allows specifying the maximum time allowed for the connection to the server.
+    Same as `timeout`, but with milliseconds precision.
+
+- **connectTimeout(Int)**
+
+    Equivalent to the [`--connect-timeout`](https://curl.haxx.se/docs/manpage.html#--connect-timeout) parameter of curl, which allows specifying the maximum time allowed for the connection to the server in seconds.
+
+- **connectTimeoutMs(Int)** (New in 0.5.0)
+
+    Same as `connectTimeout`, but with milliseconds precision.
 
 - **cookieJar(String)**
   
