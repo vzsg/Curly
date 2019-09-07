@@ -1,0 +1,25 @@
+version: 2
+
+jobs:
+  bionic:
+    docker:
+      - image: swift:5.0.3-bionic
+    steps:
+      - checkout
+      - run: apt-get -qq update; apt-get install -yqq libssl-dev zlib1g-dev libcurl4-openssl-dev pkg-config
+      - run: swift test
+  xenial:
+    docker:
+      - image: swift:5.0.3-xenial
+    steps:
+      - checkout
+      - run: apt-get -qq update; apt-get install -yqq libssl-dev zlib1g-dev libcurl4-openssl-dev pkg-config
+      - run: swift test
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - bionic
+      - xenial
+
