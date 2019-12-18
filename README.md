@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0"),
-        .package(url: "https://github.com/vzsg/Curly.git", from: "0.4.0"),
+        .package(url: "https://github.com/vzsg/Curly.git", from: "0.6.0"),
         // ... other dependencies ...
     ],
     targets: [
@@ -66,6 +66,10 @@ See the tests for examples of both methods.
 
     Equivalent to the [`-U`/`--proxy-user`](https://curl.haxx.se/docs/manpage.html#-U) parameter of curl, which allows specifying the username and password to use when authenticating to the proxy server.
 
+- **proxyPort(Int)** (New in 0.6.0)
+
+    Equivalent to `CURLOPT_PROXYPORT`, which allows separately overriding the port used to connect to the proxy.
+
 - **timeout(Int)**
 
     Equivalent to the [`-m`/`--max-time`](https://curl.haxx.se/docs/manpage.html#-m) parameter of curl, which allows specifying the maximum time allowed to service the request in seconds.
@@ -83,8 +87,8 @@ See the tests for examples of both methods.
     Same as `connectTimeout`, but with milliseconds precision.
 
 - **cookieJar(String)**
-  
-  Equivalent to the **both** the [`-b`/`--cookie`](ttps://curl.haxx.se/docs/manpage.html#-b) **and** [`-c`/`--cookie-jar`](ttps://curl.haxx.se/docs/manpage.html#-c) parameters of curl. The file name provided with the option will be used as a cookie storage – reading and writing – for this request. See the tests for an example.
+
+    Equivalent to setting **both** the [`-b`/`--cookie`](https://curl.haxx.se/docs/manpage.html#-b) **and** [`-c`/`--cookie-jar`](https://curl.haxx.se/docs/manpage.html#-c) parameters of curl. The file name provided with the option will be used as a cookie storage – reading and writing – for this request. See the tests for an example.
 
 - **followRedirects(Bool)**
 
@@ -92,4 +96,36 @@ See the tests for examples of both methods.
 
 - **insecure(Bool)**
 
-    Equivalent to the [`-k`/`--insecure`](https://curl.haxx.se/docs/manpage.html#-k) parameter of curl, which can disable verification of the certificates received from the remote server.
+    Equivalent to the [`-k`/`--insecure`](https://curl.haxx.se/docs/manpage.html#-k) parameter of curl, which can disable verification of the certificates received from the remote server. Deprecated in favor of `sslVerifyPeer`.
+
+- **sslVerifyPeer(Bool)** (New in 0.6.0)
+
+    Equivalent to [`CURLOPT_SSL_VERIFYPEER`](https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html]), used to enable or disable server certificate verification.
+
+- **sslVerifyHost(Bool)** (New in 0.6.0)
+
+    Equivalent to [`CURLOPT_SSL_VERIFYHOST`](https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYHOST.html]), used to enable or disable verification of the server host name against the server certificates.
+
+- **sslKey(path: String, type: CurlySSLFileType?, password: String?)** (New in 0.6.0)
+
+    Equivalent to the [`--key`](https://curl.haxx.se/docs/manpage.html#--key), [`--key-type`](https://curl.haxx.se/docs/manpage.html#--key-type) and [`--pass`](https://curl.haxx.se/docs/manpage.html#--pass) parameters, used to specify a private key to use for client certificate verification.
+
+- **sslCert(path: String, type: CurlySSLFileType?)** (New in 0.6.0)
+
+    Equivalent to the [`--cert`](https://curl.haxx.se/docs/manpage.html#--cert) and [`--cert-type`](https://curl.haxx.se/docs/manpage.html#--cert-type) parameters, used to specify a client certificate.
+
+- **sslCAFilePath(String)** (New in 0.6.0)
+
+    Equivalent to the [`--cacert`](https://curl.haxx.se/docs/manpage.html#--cacert) parameter, used to specify a certificate to verify the server certificates against.
+
+- **sslCADirPath(String)** (New in 0.6.0)
+
+    Equivalent to the [`--cadir`](https://curl.haxx.se/docs/manpage.html#--cadir) parameter, used to specify a folder containing certificates to verify the server certificates against.
+
+- **sslCiphers([String])** (New in 0.6.0)
+
+    Equivalent to the [`--ciphers`](https://curl.haxx.se/docs/manpage.html#--ciphers) parameter, used to specify which ciphers to allow. See [this page](https://curl.haxx.se/docs/ssl-ciphers.html) for details.
+
+- **sslPinnedPublicKey(String)** (New in 0.6.0)
+
+    Equivalent to the [`--pinnedpubkey`](https://curl.haxx.se/docs/manpage.html#--pinnedpubkey) parameter, used to specify either a file with a PEM/DER encoded public key, or an SHA-256 hash that the server must present in its certificate chain.
