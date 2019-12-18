@@ -12,7 +12,7 @@ class CurlyClientInternalTests: XCTestCase {
             let curlCode = CURLcode(rawValue: codeValue)
             let curlyErrorCode = CURLErrorCode.from(curlCode)
             XCTAssertEqual(curlyErrorCode.rawValue, Int(codeValue))
-            XCTAssert(curlyErrorCode != .unknownCode, "Missing mapping for some Curl error code")
+            XCTAssert(curlyErrorCode != .unknownCode, "Missing mapping for Curl error code \(codeValue)")
         }
     }
 

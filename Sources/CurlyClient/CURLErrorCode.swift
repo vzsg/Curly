@@ -103,6 +103,7 @@ public enum CURLErrorCode: Int {
     case sslPinnedpubkeynotmatch /* 90 - specified pinned public key did not match */
     case sslInvalidcertstatus   /* 91 - invalid certificate status */
     case http2Stream            /* 92 - stream error in HTTP/2 framing layer */
+    case recursiveApiCall       /* 93 - an api function was called from inside a callback */
     case unknownCode = -1
 
     static func from(_ curlCode: CURLcode) -> CURLErrorCode {
