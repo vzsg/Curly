@@ -121,7 +121,7 @@ See the tests for examples of both methods.
 
 - **sslCert(path: String, type: CurlySSLFileType?)** (New in 0.6.0)
 
-    Equivalent to the [`--cert`](https://curl.haxx.se/docs/manpage.html#--cert) and [`--cert-type`](https://curl.haxx.se/docs/manpage.html#--cert-type) parameters, used to specify a client certificate.
+    Equivalent to the [`-E`/`--cert`](https://curl.haxx.se/docs/manpage.html#-E) and [`--cert-type`](https://curl.haxx.se/docs/manpage.html#--cert-type) parameters, used to specify a client certificate.
 
 - **sslCAFilePath(String)** (New in 0.6.0)
 
