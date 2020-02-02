@@ -4,6 +4,15 @@ This package wraps [Perfect-CURL](https://github.com/PerfectlySoft/Perfect-CURL)
 
 ## Usage
 
+### 0. (Linux) Install libcurl development package
+
+This package relies on the development package for libcurl4. Make sure you have `libcurl4-openssl-dev` installed before trying to build your Swift project.
+
+```
+sudo apt-get update
+sudo apt-get install libcurl4-openssl-dev
+```
+
 ### 1. Add this package as a dependency to your Vapor 3 project
 
 ```swift
