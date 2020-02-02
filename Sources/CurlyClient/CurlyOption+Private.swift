@@ -1,7 +1,11 @@
 import Vapor
 
 class CurlyOptionStorage: Service {
-    var options: [CurlyOption] = []
+    var options: [CurlyOption]
+
+    init(options: [CurlyOption] = []) {
+        self.options = options
+    }
 }
 
 extension Request {

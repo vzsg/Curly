@@ -105,7 +105,7 @@ final class CurlyClientTests: XCTestCase {
         }
     }
     
-    func testSelfSignedCertificate() throws {
+    func testSelfSignedCertificateOld() throws {
         let app = try testApplication()
         let client = try app.client()
 
@@ -119,12 +119,42 @@ final class CurlyClientTests: XCTestCase {
         XCTAssertEqual(200, insecure.http.status.code)
     }
 
+    func testSelfSignedCertificate() throws {
+        let app = try testApplication()
+        let client = try app.client()
+
+        XCTAssertThrowsError(try client.get("https://self-signed.badssl.com/").wait())
+
+        let insecure = try client.get("https://self-signed.badssl.com/", beforeSend: { req in
+            req.addCurlyOption(.sslVerifyPeer(false))
+        }).wait()
+
+        XCTAssertEqual(200, insecure.http.status.code)
+    }
+
+    func testGlobalOptions() throws {
+        var services = Services.default()
+        var config = Config.default()
+
+        try services.register(CurlyProvider(globalOptions: [.sslVerifyPeer(false)]))
+        config.prefer(CurlyClient.self, for: Client.self)
+
+        let app = try Application(config: config, services: services)
+        let client = try app.client()
+
+        let insecure = try client.get("https://self-signed.badssl.com/").wait()
+
+        XCTAssertEqual(200, insecure.http.status.code)
+    }
+
     static var allTests = [
         ("testHttpBinPost", testHttpBinPost),
         ("testHttpBinGet", testHttpBinGet),
         ("testConvenience", testConvenience),
         ("testCookieJar", testCookieJar),
         ("testTimeoutError", testTimeoutError),
+        ("testSelfSignedCertificateOld", testSelfSignedCertificateOld),
         ("testSelfSignedCertificate", testSelfSignedCertificate),
+        ("testGlobalOptions", testGlobalOptions)
     ]
 }

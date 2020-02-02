@@ -60,10 +60,33 @@ Your Vapor app now uses curl directly instead of URLSession.
 From 0.3.0, Curly exposes a few useful options from cURL that are otherwise not available via the Client interface, or even URLSession. To use them, you _must_ register Curly via the `CurlyProvider` as seen in step 2.
 
 With that in place, you can call `Request.addCurlyOption` in either the `beforeSend` closure when using the convenience functions of Client, or on the Request instance itself when using `Client.send()` and a self-built Request object.  
-See the tests for examples of both methods.
+The two approaches are functionally equivalent.
+
+```swift
+try client.get("https://self-signed.badssl.com/", beforeSend: { req in
+    req.addCurlyOption(.sslVerifyPeer(false))
+})
+```
+
+```swift
+var http = HTTPRequest(method: .GET, url: "https://self-signed.badssl.com/")
+http.headers.replaceOrAdd(name: "X-Test-Header", value: "Foo")
+
+let req = Request(http: http, using: app)
+req.addCurlyOption(.sslVerifyPeer(false))
+
+try client.send(req)
+```
 
 > **Warning**: Calling `Request.addCurlyOption` without the Provider will result in a fatal error in debug builds, and a warning print in release builds.
 
+Starting with 0.7.0, options can be applied to all requests made via Curly using the new `globalOptions` optional parameter of CurlyProvider.
+
+```swift
+try services.register(CurlyProvider(globalOptions: [
+    .sslCAFilePath("my-selfsigned-certs.crt")
+]))
+```
 
 #### Available options
 
