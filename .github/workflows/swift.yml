@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install LibreSSL
+      run: brew install libressl pkg-config
     - name: Build
-      run: swift build -v
+      run: swift build
     - name: Run tests
-      run: swift test -v
+      run: swift test
